@@ -44,6 +44,28 @@ Discovery & Refinement complete. Artifacts produced:
 - Design tokens, user flows, wireframes
 - Architecture notes (Factory + Strategy)
 
+## Backend Skeleton (Java + Spring Boot + Oracle) / اسکلت بک‌اند
+
+Implemented so far (committed section by section):
+
+| Module | Status |
+|--------|--------|
+| Build scaffold (Spring Boot, Oracle, Flyway, JPA) | done |
+| `Money` (Rial) + nearest-10-Rial `RoundingStrategy` | done |
+| Contract taxonomy + `LoanProduct` + `ProductFactory` | done |
+| Profit/Fee/Penalty strategies + `EngineFactory` | done |
+| Amortization engine + equal-installment + invariant test | done |
+| Stepped / balloon / grace installment strategies | next |
+| Rule engine, customer master, loan lifecycle | next |
+
+### Build & Run / ساخت و اجرا
+```bash
+# requires JDK 17+ and Maven (and network to fetch dependencies)
+mvn clean test          # run unit tests
+mvn spring-boot:run     # run the service
+```
+Configure Oracle via env vars: `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`.
+
 ## Branches / شاخه‌ها
 
 - `main`    — stable, documentation & releases
