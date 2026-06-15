@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: core-banking-loan-system
+
+  datasource:
+    url: ${DB_URL:jdbc:oracle:thin:@//localhost:1521/XEPDB1}
+    username: ${DB_USERNAME:loan}
+    password: ${DB_PASSWORD:}
+    driver-class-name: oracle.jdbc.OracleDriver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
+        format_sql: true
+    open-in-view: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+# Domain-level settings (Zero-Code friendly defaults)
+loan:
+  money:
+    currency: IRR
+    rounding-unit: 10        # round to nearest 10 Rial
+  calendar:
+    type: jalali             # all due-dates in Jalali (Shamsi)
+
+server:
+  port: ${SERVER_PORT:8080}
+
+logging:
+  level:
+    ir.bank.loan: INFO
